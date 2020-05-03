@@ -1,0 +1,43 @@
+.container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+.menu-button {
+  -webkit-transition: fill 500ms;
+  transition: fill 500ms;
+}
+
+.outer-circle {
+  -webkit-transform-origin: 60px 60px;
+          transform-origin: 60px 60px;
+  -webkit-transition: -webkit-transform 2s cubic-bezier(0.62, 0.005, 0, 1.005);
+  transition: -webkit-transform 2s cubic-bezier(0.62, 0.005, 0, 1.005);
+  transition: transform 2s cubic-bezier(0.62, 0.005, 0, 1.005);
+  transition: transform 2s cubic-bezier(0.62, 0.005, 0, 1.005), -webkit-transform 2s cubic-bezier(0.62, 0.005, 0, 1.005);
+}
+
+.button {
+  max-width: 12rem;
+  background: none;
+  border: 0 none;
+  font-size: 0;
+  cursor: pointer;
+}
+.button svg {
+  width: 100%;
+  height: auto;
+}
+.button:hover .menu-button {
+  fill: white;
+}
+.button:hover .outer-circle {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
