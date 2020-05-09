@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>theperra</title>
+	<link href="https://vjs.zencdn.net/7.7.6/video-js.css" rel="stylesheet" />
+	<script>
+		window.HELP_IMPROVE_VIDEOJS = false;
+	</script>
+	<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+	<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+<style>
+	.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+</style>
+</head>
+
+<body style="background-color:black;">
+<div class="container">
+<video autoplay id="player" class="video-js vjs-big-play-centered" height="720" width="1280" controls preload="none">
+    <source src="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8" type="application/x-mpegURL" />
+</video>
+</div>
+	<script>
+		window.HELP_IMPROVE_VIDEOJS = false;
+	</script>
+	<script src="https://vjs.zencdn.net/7.7.6/video.js"></script>
+	<script>
+	    var defaultVolume = 0.5;
+		videojs('player', {}, function() {
+		this.volume(defaultVolume);
+		});
+		var player = videojs('#player');
+	</script>
+</body>
+</html>
