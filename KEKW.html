@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>CATCH RISITAS</title>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap" rel="stylesheet"> 
+        <style>
+            *{margin:0px;}
+            body{background-color:#040205;color:white;}
+            #click{position:absolute;bottom:0px;width:100%;text-align:center;font-size:10vw;color:white;text-shadow:0px 0px 1vw #FF9900;font-family:'Ubuntu Mono',monospace;}
+            #kekw{position:absolute;width:30vw;}
+            #pepelaugh{position:absolute;width:30vw;}
+            #chrono{z-index:-9;position:absolute;width:100%;text-align:center;font-size:3vw;font-family:'Ubuntu Mono',monospace;color:lime;}
+            #switch{z-index:-9;position:absolute;top:4vw;width:100%;text-align:center;font-size:3vw;font-family:'Ubuntu Mono',monospace;}
+        </style>
+        <script>
+            let gameState = 0
+            let gameStart = -1
+            let gameSwitch = 0
+            function d() {
+                if(gameState == 0) {
+                    let now = new Date()
+                    gameStart = now.getTime()
+                    gameState = 1
+                    g()
+                }
+                document.getElementById("switch").innerHTML = ++gameSwitch
+                if(document.getElementById(`kekw`).style.left == '0px') {
+                    document.getElementById(`kekw`).style.left = ''
+                    document.getElementById(`kekw`).style.right = '0px'
+                    document.getElementById(`pepelaugh`).style.left = '0px'
+                    document.getElementById(`pepelaugh`).style.right = ''
+                } else {
+                    document.getElementById(`kekw`).style.left = '0px'
+                    document.getElementById(`kekw`).style.right = ''
+                    document.getElementById(`pepelaugh`).style.left = ''
+                    document.getElementById(`pepelaugh`).style.right = '0px'
+                }
+            }
+            function h() {
+                let xhttp = new XMLHttpRequest()
+                xhttp.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        document.getElementById("click").innerHTML = this.responseText
+                    }
+                };
+                xhttp.open("GET",`visit.txt`,true)
+                xhttp.send()
+            }
+            function c() {
+                if(document.getElementById(`click`).style.color == 'white') {
+                    document.getElementById(`click`).style.color = 'red'
+                } else {
+                    document.getElementById(`click`).style.color = 'white'
+                }
+                setTimeout("c()",9)
+            }
+            function f() {
+                let now = new Date()
+                let timeLeft = now.getTime() - gameStart
+                document.getElementById("chrono").innerHTML = chrono(timeLeft)
+            }
+            function g() {
+                setInterval("f()", 100)
+            }
+            function chrono(ms) {
+                let seconds = Math.trunc(ms / 1000)
+                let hours = parseInt( seconds / 3600 )
+                seconds = seconds % 3600
+                let minutes = parseInt( seconds / 60 )
+                seconds = seconds % 60
+                let res = ``
+                if(hours > 0) {res = `${hours}:`}
+                if(minutes > 0) {
+                    if(minutes < 10 && hours > 0) {
+                        res = `${res}0${minutes}:`
+                    } else {
+                        res = `${res}${minutes}:`
+                    }
+                }
+                if(seconds < 10 && minutes > 0) {
+                    res = `${res}0${seconds}.`
+                } else {
+                    res = `${res}${seconds}.`
+                }
+                let msms = Math.trunc(ms / 10)
+                msms = `${msms}`
+                msms = msms.slice(-2).substr(0,1)
+                res = `${res}${msms}`
+                return res
+            }
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="click" style="color:white;"></div>
+            <div id="chrono"></div>
+            <div id="switch"></div>
+            <img id="kekw" src="KEKW.jpg" style="left:0px;" onmouseover="d()" />
+            <img id="pepelaugh" src="pepelaugh.gif" style="right:0px;" />
+        </div>
+        <script>h();c()</script>
+    </body>
+</html>
