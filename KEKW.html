@@ -90,15 +90,20 @@
                 res = `${res}${msms}`
                 return res
             }
+			function playSound(soundfile) {
+				document.getElementById("dummy").innerHTML=
+				"<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+			}
         </script>
     </head>
     <body>
+		<span id="dummy"></span>
         <div id="main">
             <div id="click" style="color:white;"></div>
             <div id="chrono"></div>
             <div id="switch"></div>
             <img id="kekw" src="KEKW.jpg" style="left:0px;" onmouseover="d()" />
-            <img id="pepelaugh" src="pepelaugh.gif" style="right:0px;" />
+            <a href="#" onclick="playSound('issou.mp3');"><img id="pepelaugh" src="pepelaugh.gif" style="right:0px;" /></a>
         </div>
         <script>h();c()</script>
     </body>
